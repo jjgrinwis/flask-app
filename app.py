@@ -1,10 +1,18 @@
 from flask import Flask
+from random import randint
 app = Flask(__name__)
 
-@app.route('/error')
+@app.route('/error/')
 def server_error():
-   return 'server error', 500
+   return 'flask server error', 500
 
-@app.route('/good')
+@app.route('/good/')
 def hello_world():
-   return 'hello world!', 200
+   return 'flask hello world!', 200
+
+@app.route('/random/')
+def hello_world():
+   if randint(0,1):
+      return "random ok flask", 200
+   else:
+      return 'random error flask', 500
