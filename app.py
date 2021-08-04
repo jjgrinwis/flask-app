@@ -1,11 +1,15 @@
-from flask import Flask
+from flask import Flask, make_response
 from random import randint
+
+from flask.scaffold import F
 app = Flask(__name__)
 
 
 @app.route('/error/')
 def server_error():
-    return 'flask server error', 500
+    response = make_response("error", 502)
+    response.headers['edge-control: max-age = 300']
+    return response
 
 
 @app.route('/good/')
