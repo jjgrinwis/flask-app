@@ -7,7 +7,7 @@ app = Flask(__name__)
 
 @app.route('/error/')
 def server_error():
-    response = make_response("error", 502)
+    response = make_response("error", 500)
     response.headers['edge-control'] = "max-age = 300"
     response.headers['x-flask'] = "true"
     return response
