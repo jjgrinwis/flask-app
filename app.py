@@ -8,8 +8,8 @@ app = Flask(__name__)
 @app.route('/error/')
 def server_error():
     response = make_response("error", 500)
-    response.headers['edge-control'] = "max-age = 300"
-    response.headers['cache-control'] = "max-age = 600"
+    response.headers['edge-control'] = "max-age=90m"
+    response.headers['cache-control'] = "max-age=600"
     response.headers['x-flask'] = "true"
     return response
 
@@ -17,8 +17,8 @@ def server_error():
 @app.route('/good/')
 def hello_world():
     response = make_response("good", 200)
-    response.headers['edge-control'] = "max-age = 300"
-    response.headers['cache-control'] = "max-age = 600"
+    response.headers['edge-control'] = "max-age=90m"
+    response.headers['cache-control'] = "max-age=600"
     response.headers['x-flask'] = "true"
     return response
 
