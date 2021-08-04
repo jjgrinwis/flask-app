@@ -16,7 +16,11 @@ def server_error():
 
 @app.route('/good/')
 def hello_world():
-    return 'flask hello world!', 200
+    response = make_response("good", 200)
+    response.headers['edge-control'] = "max-age = 300"
+    response.headers['cache-control'] = "max-age = 600"
+    response.headers['x-flask'] = "true"
+    return response
 
 
 @app.route('/random/')
