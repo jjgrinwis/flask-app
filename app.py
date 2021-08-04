@@ -9,6 +9,7 @@ app = Flask(__name__)
 def server_error():
     response = make_response("error", 500)
     response.headers['edge-control'] = "max-age = 300"
+    response.headers['cache-control'] = "max-age = 600"
     response.headers['x-flask'] = "true"
     return response
 
